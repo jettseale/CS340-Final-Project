@@ -1,0 +1,22 @@
+<div id="modal-backdrop" class="hidden"></div>
+<div id="disease-modal" class="hidden">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3>Disease Information</h3>
+        </div>
+        <div class="modal-body">
+            <h5>Name: </h5>
+                <div class="disease-card-name">
+                    <p class="disease-card-name-p">{{diseaseName}}</p>
+                </div>
+        </div>
+        <h5>Treatment Options: </h5>
+        <div class="disease-card-id">
+            <p class="disease-card-id-p">{{
+                {{#each treatment}}
+                    {{> treatmentName}}
+                {{/each}}
+            </p>
+        </div>
+    </div>
+</div>
