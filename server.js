@@ -23,7 +23,8 @@ app.set ( 'view engine', 'handlebars');
 
 app.get ( '*' , function(req,res) {
 
-  /* Stuff For Event Listeners Go Here */
+     res.status(200);
+     res.render('home-page.handlebars');
  console.log('Server Is On');
 
 });
