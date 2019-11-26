@@ -17,15 +17,34 @@ var app = express();
 
 app.use ( bodyparser.json ( {'limit' : '10mb'} ) );
 
-app.engine ( 'handlebars', exphbrs  ( { defaultLayout : 'main' } ) );
+app.engine ( 'handlebars', exphbrs ({defaultLayout: 'main'}) );
 
 app.set ( 'view engine', 'handlebars');
 
-app.get ( '*' , function(req,res) {
+app.get ('*', function(req,res){
 
-     res.status(200);
-     res.render('home-page.handlebars');
- console.log('Server Is On');
+if (req.url == '/home-page.handlebars' || req.url =='/') {
+    res.status(200).render('home-page');
+    console.log('== Loaded Page' + req.url);
+  }
+  else if (req.url == '/dieseases.handlebars') {
+    res.status(200).render('diseases');
+    console.log('== Loaded Page' + req.url);
+  }
+
+  else if (req.url == '/staff.handlebars') {
+    res.status(200).render('staff');
+    console.log('== Loaded Page' + req.url);
+  }
+
+  else if (req.url == '/patients.handlebars') {
+    res.status(200).render('patients');
+    console.log('== Loaded Page' + req.url);
+  }
+
+  else {
+    res.status(404).render('404');
+  }
 
 });
 
