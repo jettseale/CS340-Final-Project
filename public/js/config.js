@@ -5,9 +5,9 @@
 
 module.exports = {
   host: 'classsql.engr.oregonstate.edu',
-  user: 'cs340_username',
-  password: 'XXXX',
-  dbname: 'cs340_username',
-  onid: 'username'
+  user: 'cs340_sealee',
+  password: '9598',
+  dbname: 'cs340_sealee',
+  onid: 'sealee'
   
 }
