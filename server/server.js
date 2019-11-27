@@ -48,9 +48,7 @@ if (req.url == '/home-page.handlebars' || req.url =='/') {
   else {
     res.status(404).render('404');
   }
-
 console.log( req.url );
-
 });
 
 app.listen ( portOptions, function(err) {
