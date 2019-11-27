@@ -17,11 +17,14 @@ var app = express();
 
 app.use ( bodyparser.json ( {'limit' : '10mb'} ) );
 
+app.use('/public', express.static('public'));
+
 app.engine ( 'handlebars', exphbrs ({defaultLayout: 'main'}) );
 
 app.set ( 'view engine', 'handlebars');
 
 app.get ('*', function(req,res){
+
 
 if (req.url == '/home-page.handlebars' || req.url =='/') {
     res.status(200).render('home-page');
@@ -45,6 +48,8 @@ if (req.url == '/home-page.handlebars' || req.url =='/') {
   else {
     res.status(404).render('404');
   }
+
+console.log( req.url );
 
 });
 
