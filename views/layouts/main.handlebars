@@ -5,18 +5,20 @@
     <title> Our Hospital Website </title>
     <link rel="stylesheet" href='/public/styles.css' />
 </head>
-<body>
+<body id="page">
     <header>
-        <h1> Our Hospital </h1>
-        <div>
-      <a id="home-button" href="home-page.handlebars"> Home </a>
-      <a id="staff-button" href = "staff.handlebars"> Staff  </a>
-      <a id="patient-page" href="patients.handlebars"> Patients </a>
-      <a id="diesases" href="dieseases.handlebars"> Diseases </a>
-    </div>
+        <h1 id="header"> Our Hospital </h1>
+        <nav>
+        <div id="nav_text">
+          <a class="nav_link" id="home-button" href="home-page.handlebars"> Home </a> |
+          <a class="nav_link" id="staff-button" href = "staff.handlebars"> Staff </a> |
+          <a class="nav_link" id="patient-page" href="patients.handlebars"> Patients </a> |
+          <a class="nav_link" id="diesases" href="dieseases.handlebars"> Diseases </a>
+        </div>
+        </nav>
     </header>
 
-    <div> {{{body}}} </div>
+    <div id="body"> {{{body}}} </div>
 
 </body>
 
