@@ -1,0 +1,81 @@
+header{
+    text-align: center;
+}
+
+#header{
+    position: relative;
+    width: 30%;
+    background-color: #27A5DE;
+    height: 60px;
+    font-weight: bolder;
+    left: 35%;
+    font-size: 40px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+#page{
+    background-color: #030B91;
+}
+
+#body{
+    position: relative;
+    width: 85%;
+    left: 6%;
+    background-color: #E0E0E0;
+    border-radius: 30px;
+    border: 3px solid white;
+    padding: 10px;
+}
+
+#P_block{
+    width: 100%;
+    background-color: white;
+    height: 125px;
+    border-radius: 10px;
+    padding-top: 3px;
+    margin-bottom: 10px;
+}
+
+#sub-head{
+    font-weight: 50px;
+    margin: 10px;
+    margin-top: 0;
+}
+
+#patient{
+    font-size: 24px;
+    margin: 10px;
+}
+
+#P_info{
+    font-size: 18px;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+nav{
+    background-color: #E0E0E0;
+    text-align: center;
+    height: 50px;
+    margin: 20px;
+}
+
+#nav_text{
+    font-size: 28px;
+    padding: 10px;
+}
+
+.nav_link{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#main_header{
+    font-weight: bolder;
+    font-size: 75px;
+    background-color: blue;
+    height: 90px;
+    width: 1000px;
+    text-align: center;
+}
