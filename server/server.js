@@ -2,59 +2,72 @@ const fs = require( 'fs' );
 const express = require( 'express' );
 const bodyparser = require( 'body-parser' );
 const exphbrs = require( 'express-handlebars' );
-/*const mysql = require( 'mysql ');*/
-
-/*const cssFolder = fs.readdirSync( './public/css ' );
-const jsFolder = fs.readdirSync( './public/js' );
-const resFolder = fs.readdirSync( './public/images' ); */
+const mysql = require( 'mysql');
+const config = require('../public/js/config');
 
 const portOptions = {
-    hostname : 'localhost',
-    port : process.env.PORT || 3000
+	hostname: 'localhost',
+	port: process.env.port || 3333
 };
 
 var app = express();
 
-app.use ( bodyparser.json ( {'limit' : '10mb'} ) );
+app.use(bodyparser.json({'limit' : '10mb'}));
 
 app.use('/public', express.static('public'));
 
-app.engine ( 'handlebars', exphbrs ({defaultLayout: 'main'}) );
+app.engine('handlebars', exphbrs({defaultLayout: 'main'}));
 
-app.set ( 'view engine', 'handlebars');
+app.set('view engine', 'handlebars');
 
-app.get ('*', function(req,res){
-
-
-if (req.url == '/home-page.handlebars' || req.url =='/') {
-    res.status(200).render('home-page');
-    console.log('== Loaded Page' + req.url);
-  }
-  else if (req.url == '/dieseases.handlebars') {
-    res.status(200).render('diseases');
-    console.log('== Loaded Page' + req.url);
-  }
-
-  else if (req.url == '/staff.handlebars') {
-    res.status(200).render('staff');
-    console.log('== Loaded Page' + req.url);
-  }
-
-  else if (req.url == '/patients.handlebars') {
-    res.status(200).render('patients');
-    console.log('== Loaded Page' + req.url);
-  }
-
-  else {
-    res.status(404).render('404');
-  }
-console.log( req.url );
+var conn = mysql.createConnection({
+	host: config.host,
+	user: config.user,
+	password: config.password,
+	database:  config.dbname
 });
 
-app.listen ( portOptions, function(err) {
-    if (err){
-        throw err;
-    } else{
-        console.log('==Listening on Port:' + portOptions.port);
-    }
+conn.connect(function(error) {
+	if (error) {
+		console.log('Error');
+	} else {
+		console.log('Connected');
+	}
+});
+
+app.get('*', function(req, res) {
+
+	if (req.url == '/home-page.handlebars' || req.url == '/') {
+		conn.query("SELECT * FROM Building_Info", function(error, rows, fields) {
+			if (error) {
+				console.log('Query error', error);
+			} else {
+				console.log('Query success');
+				console.log(rows);
+				console.log(rows[0]);
+				res.status(200).render('home-page');
+			}
+		});
+	}
+	else if (req.url == '/diseases.handlebars') {
+		res.status(200).render('diseases');
+	}
+	else if (req.url == '/staff.handlebars') {
+		res.status(200).render('staff');
+	}
+	else if (req.url == '/patients.handlebars') {
+		res.status(200).render('patients');
+	}
+	else { 
+		res.status(404).render('404');
+	}
+});
+
+app.listen(portOptions, function(err) {
+	if (err) {
+		throw err;
+		console.log("Server error");	
+	} else {
+		console.log("Listening on port " + portOptions.port);
+	}
 });
