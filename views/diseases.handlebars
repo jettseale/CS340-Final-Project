@@ -1,6 +1,9 @@
+{{>header}}
+
 <h1> Diseases: </h1>
-<content class="disease-container">
-    {{#each diseases}}
-        {{> diseaseCard}}
+
+    {{#each rows}}
+
+        {{> diseaseCard this}}
+
     {{/each}}
-</content>
