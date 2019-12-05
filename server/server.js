@@ -35,30 +35,42 @@ conn.connect(function(error) {
 	}
 });
 
+module.exports = {
+  info: function(message) {
+    console.info(`[INFO] ${message}`);
+  },
+  error: function(message) {
+    console.error(`[ERROR] ${message}`);
+  }
+};
+
 app.get('*', function(req, res) {
 
 	if (req.url == '/home-page.handlebars' || req.url == '/') {
 		conn.query("SELECT * FROM Building_Info", function(error, rows, fields) {
-			if (error) {
-				console.log('Query error', error);
-			} else {
-				console.log('Query success');
-				console.log(rows);
-				console.log(rows[0]);
-				res.status(200).render('home-page');
-			}
+			if (error) return next(error)
+				res.render('home-page', {rows});
 		});
 	}
 	else if (req.url == '/diseases.handlebars') {
-		res.status(200).render('diseases');
+		conn.query("SELECT * FROM Disease", function(error, rows, fields) {
+			if (error) return next(error)
+				res.render('diseases', {rows});
+		});
 	}
 	else if (req.url == '/staff.handlebars') {
-		res.status(200).render('staff');
+		conn.query("SELECT * FROM Staff", function(error, rows, fields) {
+			if (error) return next(error)
+				res.render('staff', {rows});
+		});
 	}
 	else if (req.url == '/patients.handlebars') {
-		res.status(200).render('patients');
+		conn.query("SELECT * FROM Patients", function(error, rows, fields) {
+			if (error) return next(error)
+				res.render('patients', {rows});
+		});
 	}
-	else { 
+	else {
 		res.status(404).render('404');
 	}
 });
@@ -66,7 +78,7 @@ app.get('*', function(req, res) {
 app.listen(portOptions, function(err) {
 	if (err) {
 		throw err;
-		console.log("Server error");	
+		console.log("Server error");
 	} else {
 		console.log("Listening on port " + portOptions.port);
 	}

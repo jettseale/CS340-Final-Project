@@ -1,23 +1,16 @@
+{{>header}}
+
 <h1> Location:</h1>
 
-<div>
-<img src="https://cdn.britannica.com/12/130512-004-AD0A7CA4/campus-Riverside-Ottawa-The-Hospital-Ont.jpg" alt=" Hospital #1">
-<div > Building ID: <a href ="" > 661 </a>
+{{#each rows}}
 
-  <!-- Location Variables Go Here --> </div>
+{{> location this}}
+<!--<div > Building ID: {{this.bID}} </a>
 
-  <div>  Address: 331 SW Chestnut Drive,  Los Angelos, CA 83345
+   Location Variables Go Here </div>
 
-    <!-- Location Variables Go Here --> </div>
-</div>
+  <div> Address:  {{this.Address}}
 
-<div>
-<img src="https://www.allinahealth.org/-/media/allina-health/content/business-units/buffalo-hospital-building.jpg?la=en&hash=6F443CBF87BB6AA62452B99D937C3FFE " alt=" Hospital #2">
-<div > Building ID: <a href =""> 4467 </a>
-
-  <!-- Location Variables Go Here --> </div>
-
-  <div>  Address: 6779 NW Tire Avenue, Chicago, IL 23678
-
-    <!-- Location Variables Go Here --> </div>
-</div>
+    Location Variables Go Here  </div>
+</div> -->
+{{/each}}
