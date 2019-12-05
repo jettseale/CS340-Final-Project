@@ -3,7 +3,7 @@ const express = require( 'express' );
 const bodyparser = require( 'body-parser' );
 const exphbrs = require( 'express-handlebars' );
 const mysql = require( 'mysql');
-const config = require('../public/js/config');
+const config = require('./config');
 
 const portOptions = {
 	hostname: 'localhost',
