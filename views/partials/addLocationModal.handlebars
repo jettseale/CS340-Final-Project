@@ -1,0 +1,47 @@
+<div id="modal-backdrop" class="hidden"></div>
+<div id="add-location-modal" class="hidden">
+	<div class="modal-dialogue">
+
+		<div class="modal-header">
+			<h3>Add a location</h3>
+		</div>
+
+		<div class="modal-body">
+
+			<div class="modal-input">
+				<label for="location-address-input">Address:</label>
+				<textarea id="location-address-input"></textarea>
+			</div>
+
+			<div class="modal-input">
+				<label for="location-id-input">Building ID:</label>
+				<input id="location-id-input" type="number" min="0"></input>
+			</div>
+
+			<div class="modal-input">
+				<label for="location-img-input">Image URL:</label>
+				<textarea id="location-img-input"></textarea>
+			</div>
+
+			<div class="modal-input">
+				<label for="location-total-rooms-input">Total rooms:</label>
+				<input id="location-total-rooms-input" type="number" min="1"></input>
+			</div>
+
+			<div class="modal-input">
+				<label for="location-used-rooms-input">Rooms in use:</label>
+				<input id="location-used-rooms-input" type="number" min="0"></input>
+			</div>
+
+			<div class="modal-input">
+				<label for="location-unused-rooms-input">Available rooms:</label>
+				<input id="location-unused-rooms-input" type="number" min="0"></input>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="modal-cancel-button">Cancel</button>
+				<button type="button" class="modal-submit-button">Submit</button>
+			</div>
+		</div>
+	</div>
+</div>
