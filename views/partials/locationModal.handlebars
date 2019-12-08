@@ -1,26 +1,33 @@
 <div id="modal-backdrop" class="hidden"></div>
 <div id="location-modal" class="hidden">
+	<h1> Location Modal  </h1>
 	<div class="modal-dialogue">
-		
+
 		<div class="modal-header">
-			<h3>Address: {{Address}}</h3>
-			<button type="button" class="exit-modal-button">Exit</button>
+			<h3 class="address-modal">Address: {{Address}}</h3>
 		</div>
 
 		<div class="modal-body">
-			<div class="location-modal-img">{{img}}</div>
+			<div class="location-modal-img">
 
-			<div class="location-modal-bid"Building ID: {{bID}}</div>
+				<img src="{{img}}" alt="Picture of Hospital">
 
-			<div class="location-modal-num-staff">Number of staff: PLACEHOLDER</div>
+			</div>
 
-			<div class="location-modal-num-patients">Number of patients: PLACEHOLDER</div>
+			<div class="location-modal-bid"> Building ID: {{bID}}</div>
 
-			<div class="location-modal-num-total-rooms">Number of total rooms: {{Total_Rooms}}</div>
+			<div class="location-modal-num-staff">Number of staff: {{staffs}}</div>
 
-			<div class="location-modal-num-unused-rooms">Number of available rooms: {{Unused_Rooms}}</div>
+			<div class="location-modal-num-patients">Number of patients: {{patient}}</div>
+
+			<div class="location-modal-num-total-rooms">Number of Total Rooms: {{Total_Rooms}}</div>
+
+			<div class="location-modal-num-used-rooms"> Number of Used Rooms: {{Used_Rooms}}</div>
+
+			<div class="location-modal-num-unused-rooms">Number of Available Rooms:{{Unused_Rooms}}</div>
 		</div>
 	</div>
+
+	<button type="button" onclick="closeModal()" class="exit-modal-button">Exit</button>
+
 </div>
-
-

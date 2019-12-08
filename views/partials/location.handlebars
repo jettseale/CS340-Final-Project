@@ -1,7 +1,18 @@
-<div>
+<div class="whole-container-home" data-bimg = "{{this.img}}" data-build="{{this.bID}}" data-add = "{{this.Address}}" data-used = "{{this.Used_Rooms}}" data-unused = "{{this.Unused_Rooms}}"
+data-total = "{{this.Total_Rooms}}" data-snum ="{{this.staffs}}" data-pnum="{{this.patient}}">
 
-<img src="{{img}}" alt="Hospital Picture">
-{{bID}}
+<div class="contatiner-of-info">
 
-{{Address}}
+<img class="location-handlebars" src="{{this.img}}"  alt="Hospital Picture">
+
+<div class="box-for-text">
+
+<div class="text-for-building">  Building ID: {{this.bID}} </div>
+
+<div class="text-for-building"> Address: {{this.Address}} </div>
+
+</div>
+
+</div>
+
 </div>

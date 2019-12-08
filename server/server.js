@@ -27,7 +27,7 @@ var conn = mysql.createConnection({
 	database:  config.dbname
 });
 
-conn.connect(function(error) {
+conn.connect (function(error) {
 	if (error) {
 		console.log('Error');
 	} else {
@@ -35,47 +35,43 @@ conn.connect(function(error) {
 	}
 });
 
-module.exports = {
-  info: function(message) {
-    console.info(`[INFO] ${message}`);
-  },
-  error: function(message) {
-    console.error(`[ERROR] ${message}`);
-  }
-};
+app.get( '*', function(req, res) {
 
-app.get('*', function(req, res) {
-
-	if (req.url == '/home-page.handlebars' || req.url == '/') {
-		conn.query("SELECT * FROM Building_Info", function(error, rows, fields) {
-			if (error) return next(error)
+	if 	(req.url == '/home-page.handlebars' || req.url == '/') {
+		conn.query("SELECT B.img, B.bID, B.Address, B.Used_Rooms, B.Unused_Rooms, B.Total_Rooms, COUNT(S.sID) AS staffs, COUNT(P.pID) As patient FROM Building_Info B, Staff S, Patients P WHERE B.bID = P.pID And B.bID = S.Staff_bID GROUP BY B.bID",
+		function(error, rows, fields) {
+			if (error) return next(error);
 				res.render('home-page', {rows});
 		});
-	}
+}
+
 	else if (req.url == '/diseases.handlebars') {
 		conn.query("SELECT * FROM Disease", function(error, rows, fields) {
-			if (error) return next(error)
+			if (error) return next(error);
 				res.render('diseases', {rows});
 		});
 	}
 	else if (req.url == '/staff.handlebars') {
 		conn.query("SELECT * FROM Staff", function(error, rows, fields) {
-			if (error) return next(error)
+			if (error) return next(error);
 				res.render('staff', {rows});
 		});
 	}
 	else if (req.url == '/patients.handlebars') {
 		conn.query("SELECT * FROM Patients", function(error, rows, fields) {
-			if (error) return next(error)
+			if (error) return next(error);
 				res.render('patients', {rows});
 		});
 	}
 	else {
 		res.status(404).render('404');
 	}
+
+	console.log(req.url);
+
 });
 
-app.listen(portOptions, function(err) {
+app.listen (portOptions, function(err) {
 	if (err) {
 		throw err;
 		console.log("Server error");

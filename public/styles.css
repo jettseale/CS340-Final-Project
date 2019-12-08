@@ -79,3 +79,49 @@ nav{
     width: 1000px;
     text-align: center;
 }
+
+.location-handlebars{
+  width: 275px;
+  height: 225px;
+  margin: 35px;
+  align-content: center;
+}
+
+.location-handlebars:hover {
+  cursor: pointer;
+  transition: all .3s ease-in;
+  opacity: 1;
+  transform:  scale(1.05);
+}
+
+
+.text-for-building{
+
+  display: block;
+  text-align: left;
+  padding-left: 30px;
+  padding-bottom: 20px;
+
+}
+
+.whole-container-home{
+
+width: 350px;
+height: 400px;
+display: inline-block;
+border: 1px solid black;
+margin: 5px;
+}
+
+#title-of-page{
+display: block;
+align-content: center;
+text-align: center;
+width: 100%;
+}
+
+#location-modal {
+display: block;
+width: 80%;
+height: 80%;
+}
