@@ -1,6 +1,7 @@
 <div id="modal-backdrop" class="hidden"></div>
 <div id="location-modal" class="hidden">
-	<h1> Location Modal  </h1>
+	<div class="box-for-picture">
+	<h1 class= "location-header"> Location Modal  </h1>
 	<div class="modal-dialogue">
 
 		<div class="modal-header">
@@ -10,7 +11,7 @@
 		<div class="modal-body">
 			<div class="location-modal-img">
 
-				<img src="{{img}}" alt="Picture of Hospital">
+				<img src="{{img}}" class="picture-modal" alt="Picture of Hospital">
 
 			</div>
 
@@ -26,8 +27,10 @@
 
 			<div class="location-modal-num-unused-rooms">Number of Available Rooms:{{Unused_Rooms}}</div>
 		</div>
+
+		<button type="button" onclick="closeModal()" class="exit-modal-button">Exit</button>
 	</div>
 
-	<button type="button" onclick="closeModal()" class="exit-modal-button">Exit</button>
+</div>
 
 </div>
