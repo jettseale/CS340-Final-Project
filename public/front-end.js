@@ -1,30 +1,55 @@
 
-function closeModal(){
+function closeModalLocation(){
 
   var modalBackdrop = document.getElementById('modal-backdrop');
-  var createTwitModal = document.getElementById('location-modal');
+  var createLocationModal = document.getElementById('location-modal');
 
   // Hide the modal and its backdrop.
   modalBackdrop.classList.add('hidden');
-  createTwitModal.classList.add('hidden');
+  createLocationModal.classList.add('hidden');
 
   modalBackdrop.parentNode.removeChild(modalBackdrop);
-  createTwitModal.parentNode.removeChild(createTwitModal);
+  createLocationModal.parentNode.removeChild(createLocationModal);
 
 }
 
-function showModalFully () {
+function showModalFullyLocation () {
 
   var modalBackdrop = document.getElementById('modal-backdrop');
-  var createTwitModal = document.getElementById('location-modal');
+  var createLocationModal = document.getElementById('location-modal');
 
   // Show the modal and its backdrop.
   modalBackdrop.classList.remove('hidden');
-  createTwitModal.classList.remove('hidden');
+  createLocationModal.classList.remove('hidden');
 
 }
 
-function showModal(info){
+function closeModalDisease(){
+
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var createDiseaseModal = document.getElementById('disease-modal');
+
+  // Hide the modal and its backdrop.
+  modalBackdrop.classList.add('hidden');
+  createDiseaseModal.classList.add('hidden');
+
+  modalBackdrop.parentNode.removeChild(modalBackdrop);
+  createDiseaseModal.parentNode.removeChild(createDiseaseModal);
+
+}
+
+function showModalFullyDisease () {
+
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var createDiseaseModal = document.getElementById('disease-modal');
+
+  // Show the modal and its backdrop.
+  modalBackdrop.classList.remove('hidden');
+  createDiseaseModal.classList.remove('hidden');
+
+}
+
+function showModalLocation (info){
 
 let informationFromHandlebars = Handlebars.templates.locationModal({
   Address: info.bAdd,
@@ -39,10 +64,26 @@ let informationFromHandlebars = Handlebars.templates.locationModal({
     // Show the modal
     var container = document.querySelector('.content-for-modal');
     container.insertAdjacentHTML('beforeend', informationFromHandlebars);
-    showModalFully();
+    showModalFullyLocation();
 }
 
-function onCardClick() {
+function showModalDisease (info){
+
+let informationFromHandlebars = Handlebars.templates.diseaseModal({
+
+  dID: info.diseaid,
+  dName: info.disname,
+  tID: info.treatme,
+  tName: info.ttname
+
+});
+    // Show the modal
+    var container = document.querySelector('.contatiner-for-diseases');
+    container.insertAdjacentHTML('beforeend', informationFromHandlebars);
+    showModalFullyDisease();
+}
+
+function onCardClickLocation() {
     // Get all of the information you need from the card data attributes
     let info = {
 
@@ -58,16 +99,34 @@ function onCardClick() {
     };
     console.log('made it here');
     // Render the modal with the information from the card
-    showModal(info);
+    showModalLocation(info);
+}
+
+function onCardClickDisease() {
+    // Get all of the information you need from the card data attributes
+    let info = {
+
+        diseaid: this.dataset.ddid,
+        disname: this.dataset.dna,
+        treatme: this.dataset.ttid,
+        ttname: this.dataset.tna
+
+    };
+    // Render the modal with the information from the card
+    showModalDisease(info);
 }
 
 
 // Register your onClick event handler for all of the location cards
 let cards = document.getElementsByClassName('location-handlebars');
 Array.from(cards).forEach(function(card) {
-    card.addEventListener('click', onCardClick);
+    card.addEventListener('click', onCardClickLocation);
 });
 
+let diseaseCards = document.getElementsByClassName('disease-for-text-bin');
+Array.from(diseaseCards).forEach(function(dis) {
+    dis.addEventListener('click', onCardClickDisease);
+});
 
 //ADD LOCATION MODAL:
 
@@ -82,8 +141,8 @@ var addLocationCancelButton = document.getElementsByClassName('modal-cancel-butt
 var addLocationSubmitButton = document.getElementsByClassName('modal-submit-button')[0];
 
 function clearAddLocationInputs() {
-  document.getElementById('location-address-input').value = "";   
-  document.getElementById('location-id-input').value = "";   
+  document.getElementById('location-address-input').value = "";
+  document.getElementById('location-id-input').value = "";
   document.getElementById('location-img-input').value = "";
   document.getElementById('location-total-rooms-input').value = "";
   document.getElementById('location-used-rooms-input').value = "";

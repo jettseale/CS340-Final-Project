@@ -46,7 +46,7 @@ app.get( '*', function(req, res) {
 }
 
 	else if (req.url == '/diseases.handlebars') {
-		conn.query("SELECT * FROM Disease", function(error, rows, fields) {
+		conn.query("SELECT D.dID, D.dName, T.tID, T.tName FROM Disease D, Treatment T, Has H WHERE D.dID = H.Has_dID And H.Has_tID = T.tID GROUP BY D.dID", function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('diseases', {rows});
 		});

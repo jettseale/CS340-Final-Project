@@ -1,17 +1,23 @@
 <div id="modal-backdrop" class="hidden"></div>
 <div id="disease-modal" class="hidden">
-	<div class="modal-dialogue">
-
-		<div class="modal-header">
-			<h3>Name: {{dName}}</h3>
-			<button type="button" class="exit-modal-button">Exit</button>
-		</div>
-
-		<div class="modal-body">
-			<div class="disease-modal-id">Disease ID: {{dID}}</div>
-
-			<div class="disease-modal-treatments">PLACEHOLDER</div>
-
-		</div>
-	</div>
+  <div class="modal-dialog">
+        <div class="modal-header">
+            <h3>Disease Information</h3>
+        </div>
+        <div class="modal-body">
+          <h5> ID: {{dID}} </h5>
+            <h5>Name: {{dName}}</h5>
+                <div class="disease-card-name">
+                    <p class="disease-card-name-p"> </p>
+                </div>
+        </div>
+        <h5>Treatment Options: </h5>
+        <div class="disease-card-id">
+            <div class="treat-options">
+              <h6> ID: {{tID}} </h6>
+                <h6>Name: {{tName}}</h6>
+            </div>
+        </div>
+    </div>
+    <button type="button" onclick="closeModalDisease()" class="exit-modal-button">Exit</button>
 </div>
