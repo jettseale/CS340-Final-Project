@@ -37,7 +37,7 @@ conn.connect (function(error) {
 
 app.get( '*', function(req, res) {
 
-	if 	(req.url == '/home-page.handlebars' || req.url == '/') {
+	if 	(req.url == '/home-page' || req.url == '/') {
 		conn.query("SELECT B.img, B.bID, B.Address, B.Used_Rooms, B.Unused_Rooms, B.Total_Rooms, COUNT(S.sID) AS staffs, COUNT(P.pID) As patient FROM Building_Info B, Staff S, Patients P WHERE B.bID = P.pID And B.bID = S.Staff_bID GROUP BY B.bID",
 		function(error, rows, fields) {
 			if (error) return next(error);
@@ -45,19 +45,19 @@ app.get( '*', function(req, res) {
 		});
 }
 
-	else if (req.url == '/diseases.handlebars') {
+	else if (req.url == '/diseases') {
 		conn.query("SELECT D.dID, D.dName, T.tID, T.tName FROM Disease D, Treatment T, Has H WHERE D.dID = H.Has_dID And H.Has_tID = T.tID GROUP BY D.dID", function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('diseases', {rows});
 		});
 	}
-	else if (req.url == '/staff.handlebars') {
+	else if (req.url == '/staff') {
 		conn.query("SELECT * FROM Staff", function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('staff', {rows});
 		});
 	}
-	else if (req.url == '/patients.handlebars') {
+	else if (req.url == '/patients') {
 		conn.query("SELECT * FROM Patients", function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('patients', {rows});
