@@ -5,7 +5,9 @@
     "scripts": {
         "start": "node server/server.js",
         "restart": "nodemon server/server.js",
-        "build": "handlebars ./views/partials/locationModal.handlebars -f ./public/templates.js -e handlebars",
+        "build-one": "handlebars ./views/partials/locationModal.handlebars -f ./public/templates.js -e handlebars",
+        "build-two": "handlebars ./views/partials/diseaseModal.handlebars -f ./public/diseasejs.js -e handlebars",
+        "run-build": "npm run build-one && npm run build-two",
         "prestart": "npm run build"
     },
     "dependencies": {

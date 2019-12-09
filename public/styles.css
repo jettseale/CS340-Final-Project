@@ -171,6 +171,40 @@ width: 100%;
   background-color: rgba(0, 0, 0, 0.95);
 }
 
+.modal-dialog{
+color: white;
+
+}
+
+.disease-for-text-bin {
+border: 1px solid black;
+margin: 20px;
+padding: 20px;
+}
+
+.disease-for-text-bin:hover{
+  cursor: pointer;
+  transition: all .3s ease-in;
+  opacity: 1;
+  transform:  scale(1.05);
+}
+
+#disease-modal {
+  position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1010;
+    overflow: scroll;
+}
+
+.modal-header {
+
+  text-align: center;
+  color: white;
+}
+
 .hidden {
   display: none;
 }

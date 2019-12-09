@@ -19,6 +19,6 @@ templates['locationModal'] = template({"compiler":[8,">= 4.3.0"],"main":function
     + alias4(((helper = (helper = helpers.Used_Rooms || (depth0 != null ? depth0.Used_Rooms : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Used_Rooms","hash":{},"data":data,"loc":{"start":{"line":26,"column":69},"end":{"line":26,"column":83}}}) : helper)))
     + "</div>\n\n			<div class=\"location-modal-num-unused-rooms\">Number of Available Rooms:"
     + alias4(((helper = (helper = helpers.Unused_Rooms || (depth0 != null ? depth0.Unused_Rooms : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Unused_Rooms","hash":{},"data":data,"loc":{"start":{"line":28,"column":74},"end":{"line":28,"column":90}}}) : helper)))
-    + "</div>\n		</div>\n\n		<button type=\"button\" onclick=\"closeModal()\" class=\"exit-modal-button\">Exit</button>\n	</div>\n\n</div>\n\n</div>\n";
+    + "</div>\n		</div>\n\n		<button type=\"button\" onclick=\"closeModalLocation()\" class=\"exit-modal-button\">Exit</button>\n	</div>\n\n</div>\n\n</div>\n";
 },"useData":true});
 })();
