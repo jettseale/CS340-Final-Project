@@ -67,3 +67,32 @@ let cards = document.getElementsByClassName('location-handlebars');
 Array.from(cards).forEach(function(card) {
     card.addEventListener('click', onCardClick);
 });
+
+
+//ADD LOCATION MODAL:
+
+var addLocationButton = document.getElementsByClassName('add-location-button')[0];
+
+var addLocationModal = document.getElementById('add-location-modal');
+
+var addLocationModalBG = document.getElementById('modal-backdrop');
+
+var addLocationCancelButton = document.getElementsByClassName('modal-cancel-button')[0];
+
+var addLocationSubmitButton = document.getElementsByClassName('modal-submit-button')[0];
+
+function clearAddLocationInputs() {
+  document.getElementById('location-address-input').value = "";   
+  document.getElementById('location-id-input').value = "";   
+  document.getElementById('location-img-input').value = "";
+  document.getElementById('location-total-rooms-input').value = "";
+  document.getElementById('location-used-rooms-input').value = "";
+  document.getElementById('location-unused-rooms-input').value = "";
+}
+
+window.onload = function () {
+  addLocationButton.addEventListener('click', function () {
+    addLocationModal.classList.toggle('hidden');
+    addLocationModalBG.classList.toggle('hidden');
+  });
+}
