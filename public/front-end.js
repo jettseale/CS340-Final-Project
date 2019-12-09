@@ -189,17 +189,10 @@ addLocationSubmitButton.addEventListener('click', function() {
 		var url = '/addLocation';
 		request.open('POST', url);
 		var requestBody = JSON.stringify(newLocation);
-		
-		request.addEventListener('load', function(event) {
-			if (event.target.status == 200) {
-				console.log("Yeet");
-			} else {
-				console.log("Nah");
-			}
-		});
 
 		request.setRequestHeader('Content-Type', 'application/json');
 		request.send(requestBody);
+		alert("Location successfully added.");
 	} else {
 		alert("Location could not be added. Please fill the form with valid information.");
 

@@ -7,7 +7,7 @@ const config = require('./config');
 
 const portOptions = {
 	hostname: 'localhost',
-	port: process.env.port || 3333
+	port: process.env.port || 3330
 };
 
 var app = express();
@@ -38,7 +38,7 @@ conn.connect (function(error) {
 app.get( '*', function(req, res) {
 
 	if 	(req.url == '/home-page' || req.url == '/') {
-		conn.query("SELECT B.img, B.bID, B.Address, B.Used_Rooms, B.Unused_Rooms, B.Total_Rooms, COUNT(S.sID) AS staffs, COUNT(P.pID) As patient FROM Building_Info B, Staff S, Patients P WHERE B.bID = P.pID And B.bID = S.Staff_bID GROUP BY B.bID",
+		conn.query("SELECT Building_Info.img, Building_Info.bID, Building_Info.Address, Building_Info.Used_Rooms, Building_Info.Unused_Rooms, Building_Info.Total_Rooms, COUNT(Staff.sID) AS staffs, COUNT(Patients.pID) AS patient FROM Building_Info LEFT JOIN Staff on Building_Info.bID = Staff.Staff_bID LEFT JOIN Patients on Building_Info.bID = Patients.Patients_bID GROUP BY Building_Info.bID",
 		function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('home-page', {rows});
@@ -76,8 +76,7 @@ app.post('/addLocation', function(req, res) {
 	console.log(req.body.Address);
 	var sql = 'INSERT INTO Building_Info (Address, bID, img, Total_Rooms, Unused_Rooms, Used_Rooms) VALUES (?, ?, ?, ?, ?, ?)';
 	conn.query(sql, [req.body.Address, req.body.bID, req.body.img, req.body.Total_Rooms, req.body.Unused_Rooms, req.body.Used_Rooms], function () {
-		res.status(200)
-		console.log("We did it!!!");
+		res.status(200);
 	});
 });
 
