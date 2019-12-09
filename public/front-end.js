@@ -149,9 +149,25 @@ function clearAddLocationInputs() {
   document.getElementById('location-unused-rooms-input').value = "";
 }
 
-window.onload = function () {
-  addLocationButton.addEventListener('click', function () {
+addLocationButton.addEventListener('click', function() {
     addLocationModal.classList.toggle('hidden');
-    addLocationModalBG.classList.toggle('hidden');
-  });
-}
+});
+
+addLocationCancelButton.addEventListener('click', function() {
+	addLocationModal.classList.toggle('hidden');
+	clearAddLocationInputs();
+});
+
+addLocationSubmitButton.addEventListener('click', function() {
+	addLocationModal.classList.toggle('hidden');
+	var newLocation = {
+		Address: document.getElementById('location-address-input').value,
+		bID: parseInt(document.getElementById('location-id-input').value, 10),
+		img: document.getElementById('location-img-input').value,
+		Total_Rooms: parseInt(document.getElementById('location-total-rooms-input').value, 10),
+		Unused_Rooms: parseInt(document.getElementById('location-unused-rooms-input').value, 10),
+		Used_Rooms: parseInt(document.getElementById('location-used-rooms-input').value, 10)
+	}
+	console.log(newLocation);
+	clearAddLocationInputs();
+});
