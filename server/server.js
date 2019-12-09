@@ -71,6 +71,16 @@ app.get( '*', function(req, res) {
 
 });
 
+app.post('/addLocation', function(req, res) {
+	console.log(req.body);
+	console.log(req.body.Address);
+	var sql = 'INSERT INTO Building_Info (Address, bID, img, Total_Rooms, Unused_Rooms, Used_Rooms) VALUES (?, ?, ?, ?, ?, ?)';
+	conn.query(sql, [req.body.Address, req.body.bID, req.body.img, req.body.Total_Rooms, req.body.Unused_Rooms, req.body.Used_Rooms], function () {
+		res.status(200)
+		console.log("We did it!!!");
+	});
+});
+
 app.listen (portOptions, function(err) {
 	if (err) {
 		throw err;
