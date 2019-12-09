@@ -149,6 +149,18 @@ function clearAddLocationInputs() {
   document.getElementById('location-unused-rooms-input').value = "";
 }
 
+function validateLocation(newLocation) {
+	if (!newLocation.Address) return false;
+	if (isNaN(newLocation.bID) || newLocation.bID <= 0) return false;
+	if (!newLocation.img) return false;
+	if (isNaN(newLocation.Total_Rooms) || newLocation.Total_Rooms <= 0) return false;
+	if (isNaN(newLocation.Unused_Rooms) || newLocation.Unused_Rooms < 0) return false;
+	if (isNaN(newLocation.Used_Rooms) || newLocation.Used_Rooms < 0) return false;
+	if (newLocation.Unused_Rooms + newLocation.Used_Rooms != newLocation.Total_Rooms) return false;
+
+	return true;
+}
+
 addLocationButton.addEventListener('click', function() {
     addLocationModal.classList.toggle('hidden');
 });
@@ -159,7 +171,6 @@ addLocationCancelButton.addEventListener('click', function() {
 });
 
 addLocationSubmitButton.addEventListener('click', function() {
-	addLocationModal.classList.toggle('hidden');
 	var newLocation = {
 		Address: document.getElementById('location-address-input').value,
 		bID: parseInt(document.getElementById('location-id-input').value, 10),
@@ -168,6 +179,29 @@ addLocationSubmitButton.addEventListener('click', function() {
 		Unused_Rooms: parseInt(document.getElementById('location-unused-rooms-input').value, 10),
 		Used_Rooms: parseInt(document.getElementById('location-used-rooms-input').value, 10)
 	}
-	console.log(newLocation);
-	clearAddLocationInputs();
+	
+	if (validateLocation(newLocation)) {
+		clearAddLocationInputs();
+		console.log(newLocation);
+		addLocationModal.classList.toggle('hidden');
+
+		var request = new XMLHttpRequest();
+		var url = '/addLocation';
+		request.open('POST', url);
+		var requestBody = JSON.stringify(newLocation);
+		
+		request.addEventListener('load', function(event) {
+			if (event.target.status == 200) {
+				console.log("Yeet");
+			} else {
+				console.log("Nah");
+			}
+		});
+
+		request.setRequestHeader('Content-Type', 'application/json');
+		request.send(requestBody);
+	} else {
+		alert("Location could not be added. Please fill the form with valid information.");
+
+	}
 });
