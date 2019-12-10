@@ -253,3 +253,10 @@ border-radius: 15px;
     margin-bottom: 0px;
     margin-left: 15px;
 }
+
+#Staff_block:hover{
+  cursor: pointer;
+  transition: all .3s ease-in;
+  opacity: 1;
+  transform:  scale(1.05);
+}
