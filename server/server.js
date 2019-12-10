@@ -52,13 +52,13 @@ app.get( '*', function(req, res) {
 		});
 	}
 	else if (req.url == '/staff') {
-		conn.query("SELECT * FROM Staff", function(error, rows, fields) {
+		conn.query("SELECT Staff.sID, Staff.sName,  Staff.Staff_bID, Staff.Employee_Type, COUNT(Patients.pID) AS numpatients FROM Staff LEFT JOIN Cares_For ON Staff.sID = Cares_For.Cares_sID LEFT JOIN Patients ON Patients.pID = Cares_For.Cares_pID GROUP BY Staff.SID", function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('staff', {rows});
 		});
 	}
 	else if (req.url == '/patients') {
-		conn.query("SELECT * FROM Patients", function(error, rows, fields) {
+		conn.query("SELECT P.pName, P.pID, P.Age, P.Room_Num, P.Patients_bID, S.sID, S.sName FROM Staff S, Cares_For C, Patients P WHERE P.pID = C.Cares_pID AND C.Cares_sID = S.sID", function(error, rows, fields) {
 			if (error) return next(error);
 				res.render('patients', {rows});
 		});

@@ -18,7 +18,7 @@ header{
     background-color: #030B91;
 }
 
-#body{
+.body {
     position: relative;
     width: 95%;
     left: 2%;
@@ -26,15 +26,16 @@ header{
     border-radius: 30px;
     border: 3px solid white;
     padding: 10px;
+    cursor: default;
 }
 
-#P_block{
+.p-block{
     width: 100%;
     background-color: white;
-    height: 125px;
+    height: 85px;
     border-radius: 10px;
-    padding-top: 3px;
-    margin-bottom: 10px;
+    padding-bottom: 3px;
+    margin-right: 5px;
 }
 
 #sub-head{
@@ -228,15 +229,16 @@ border-radius: 15px;
     padding: 3px;
     width: 175px;
     border: 1px solid #030B91;
+    cursor: pointer;
 }
 
-#Staff-name{
+#staff-name{
     font-size: 24px;
     margin: 10px;
     margin-bottom: 0px;
 }
 
-#Staff_block{
+.staff-block{
     width: 100%;
     background-color: white;
     height: 125px;
@@ -244,9 +246,10 @@ border-radius: 15px;
     padding-top: 3px;
     margin-bottom: 10px;
     border: 1px solid black;
+    padding: 8px;
 }
 
-#Staff-info{
+#staff-info{
     font-size: 18px;
     padding: 10px;
     padding-top: 0px;
@@ -254,9 +257,40 @@ border-radius: 15px;
     margin-left: 15px;
 }
 
-#Staff_block:hover{
+.staff-block:hover{
   cursor: pointer;
   transition: all .3s ease-in;
   opacity: 1;
-  transform:  scale(1.05);
+  transform:  scale(1.02);
+}
+
+#staff-modal {
+  position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   z-index: 1010;
+   overflow: scroll;
+}
+
+.content-for-patient {
+  margin: 5px;
+  padding: 10px;
+}
+
+.patient-header-name{
+
+  padding: 8px 0px 0px 8px;
+  margin: 5px;
+}
+
+#patients-modal {
+  position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   z-index: 1010;
+   overflow: scroll;
 }

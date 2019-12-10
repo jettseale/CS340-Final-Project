@@ -5,9 +5,11 @@
     "scripts": {
         "start": "node server/server.js",
         "restart": "nodemon server/server.js",
-        "build-one": "handlebars ./views/partials/locationModal.handlebars -f ./public/templates.js -e handlebars",
+        "build-one": "handlebars ./views/partials/locationModal.handlebars -f ./public/locationjs.js -e handlebars",
         "build-two": "handlebars ./views/partials/diseaseModal.handlebars -f ./public/diseasejs.js -e handlebars",
-        "run-build": "npm run build-one && npm run build-two"
+        "build-three": "handlebars ./views/partials/staffModal.handlebars -f ./public/staffjs.js -e handlebars",
+        "build-four": "handlebars ./views/partials/patientModal.handlebars -f ./public/patientjs.js -e handlebars",
+        "run-build": "npm run build-one && npm run build-two && npm run build-three && npm run build-four"
     },
     "dependencies": {
         "bcrpyt": "^2.0.0",

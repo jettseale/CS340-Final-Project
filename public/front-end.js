@@ -24,6 +24,20 @@ function showModalFullyLocation () {
 
 }
 
+function closeModalStaff(){
+
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var createStaffModal = document.getElementById('staff-modal');
+
+  // Hide the modal and its backdrop.
+  modalBackdrop.classList.add('hidden');
+  createStaffModal.classList.add('hidden');
+
+  modalBackdrop.parentNode.removeChild(modalBackdrop);
+  createStaffModal.parentNode.removeChild(createStaffModal);
+
+}
+
 function closeModalDisease(){
 
   var modalBackdrop = document.getElementById('modal-backdrop');
@@ -46,6 +60,42 @@ function showModalFullyDisease () {
   // Show the modal and its backdrop.
   modalBackdrop.classList.remove('hidden');
   createDiseaseModal.classList.remove('hidden');
+
+}
+
+function showModalFullyStaff () {
+
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var createStaffModal = document.getElementById('staff-modal');
+
+  // Show the modal and its backdrop.
+  modalBackdrop.classList.remove('hidden');
+  createStaffModal.classList.remove('hidden');
+
+}
+
+function showModalFullyPatient () {
+
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var createPatientModal = document.getElementById('patients-modal');
+
+  // Show the modal and its backdrop.
+  modalBackdrop.classList.remove('hidden');
+  createPatientModal.classList.remove('hidden');
+
+}
+
+function closeModalPatient(){
+
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var createPatientModal = document.getElementById('patients-modal');
+
+  // Hide the modal and its backdrop.
+  modalBackdrop.classList.add('hidden');
+  createPatientModal.classList.add('hidden');
+
+  modalBackdrop.parentNode.removeChild(modalBackdrop);
+  createPatienModal.parentNode.removeChild(createPatientModal);
 
 }
 
@@ -78,10 +128,28 @@ let informationFromHandlebars = Handlebars.templates.diseaseModal({
 
 });
     // Show the modal
-    var container = document.querySelector('.contatiner-for-diseases');
+    var container = document.querySelector('.container-for-diseases');
     container.insertAdjacentHTML('beforeend', informationFromHandlebars);
     showModalFullyDisease();
 }
+
+function showModalStaff (info){
+
+let informationFromHandlebars = Handlebars.templates.staffModal ({
+
+  sID: info.staffid,
+  sName: info.staffname,
+  Employee_Type: info.stafftyp,
+  numpatients: info.staffp,
+  Staff_bID:  info.staffb
+
+});
+    // Show the modal
+    var container = document.querySelector('.content-for-staff');
+    container.insertAdjacentHTML('beforeend', informationFromHandlebars);
+    showModalFullyStaff();
+}
+
 
 function onCardClickLocation() {
     // Get all of the information you need from the card data attributes
@@ -116,6 +184,60 @@ function onCardClickDisease() {
     showModalDisease(info);
 }
 
+function onCardClickStaff() {
+    // Get all of the information you need from the card data attributes
+    let info = {
+
+        staffid: this.dataset.stffid, //id
+        staffname: this.dataset.snme, //s name
+        stafftyp: this.dataset.semp, //employee type
+        staffb: this.dataset.stffb, //staff building id
+        staffp: this.dataset.stffwp //amount of patients
+
+    };
+
+    console.log("Made it Here");
+    // Render the modal with the information from the card
+    showModalStaff(info);
+}
+
+function showModalPatient (info){
+
+let informationFromHandlebars = Handlebars.templates.patientModal ({
+
+  pName: info.patname,
+  pID: info.patid,
+  Age: info.patiage,
+  Room_Num: info.patroom,
+  Patients_bID:  info.patbuid,
+  sName: info.staname,
+  sID: info.staffid
+
+});
+    // Show the modal
+    var container = document.querySelector('.content-container-for-patients');
+    container.insertAdjacentHTML('beforeend', informationFromHandlebars);
+    showModalFullyPatient();
+}
+
+function onCardClickPatients() {
+    // Get all of the information you need from the card data attributes
+    let info = {
+
+        patname: this.dataset.pnme,
+        patid: this.dataset.ptid,
+        patiage: this.dataset.ptag,
+        patroom: this.dataset.proom,
+        patbuid: this.dataset.pbid,
+        staname: this.dataset.snme,
+        staffid: this.dataset.stffid
+
+    };
+
+    // Render the modal with the information from the card
+    showModalPatient(info);
+}
+
 
 // Register your onClick event handler for all of the location cards
 let cards = document.getElementsByClassName('location-handlebars');
@@ -126,6 +248,16 @@ Array.from(cards).forEach(function(card) {
 let diseaseCards = document.getElementsByClassName('disease-for-text-bin');
 Array.from(diseaseCards).forEach(function(dis) {
     dis.addEventListener('click', onCardClickDisease);
+});
+
+let staffCards = document.getElementsByClassName('staff-block');
+Array.from(staffCards).forEach(function(staff) {
+    staff.addEventListener('click', onCardClickStaff);
+});
+
+let patientCards = document.getElementsByClassName('p-block');
+Array.from(patientCards).forEach(function(staff) {
+    staff.addEventListener('click', onCardClickPatients);
 });
 
 //ADD LOCATION MODAL:
@@ -180,7 +312,7 @@ addLocationSubmitButton.addEventListener('click', function() {
 		Unused_Rooms: parseInt(document.getElementById('location-unused-rooms-input').value, 10),
 		Used_Rooms: parseInt(document.getElementById('location-used-rooms-input').value, 10)
 	}
-	
+
 	if (validateLocation(newLocation)) {
 		clearAddLocationInputs();
 		console.log(newLocation);
@@ -192,7 +324,7 @@ addLocationSubmitButton.addEventListener('click', function() {
 		var requestBody = JSON.stringify(newLocation);
 		request.setRequestHeader('Content-Type', 'application/json');
 		request.send(requestBody);
-		
+
 		request.addEventListener('load', function(event) {
 			console.log(event.target.status);
 			if (event.target.status  == 200) {

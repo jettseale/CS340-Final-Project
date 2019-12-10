@@ -3,14 +3,22 @@
 	<div class="modal-dialogue">
 
 		<div class="modal-header">
-			<h3>Name: {{pName}}</h3>
-			<button type="button" class="exit-modal-button">Exit</button>
+			<h3> Name: {{pName}}</h3>
 		</div>
 
 		<div class="modal-body">
-			<div class="patient-modal-id">{{pID}}</h3>
+			<div class="patient-modal-id"> Patient ID: {{pID}}</div>
 
-			<div class="patient-modal-age">{{Age}}</h3>
+			<div class="patient-age">	Patient Age: {{Age}} </div> <br>
+
+				<div class="patient-num"> Patient Room Num: {{Room_Num}}</div> <br>
+
+				<div class="patient-building-id"> Patient Building ID: {{Patients_bID}}</div><br>
+
+				<div class="being-taken-by"> Staff Assigned Name: {{sName}} </div> <br>
+
+				<div class="being-taken-by-id"> Staff ID: {{sID}} </div>
+				<button type="button" onclick="closeModalPatient()" class="exit-modal-button">Exit</button>
 		</div>
 	</div>
 </div>

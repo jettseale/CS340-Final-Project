@@ -1,18 +1,20 @@
 <div id="modal-backdrop" class="hidden"></div>
 <div id="staff-modal" class="hidden">
 	<div class="modal-dialogue">
-
 		<div class="modal-header">
 			<h3>Name: {{sName}}</h3>
-			<button type="button" class="exit-modal-button">Exit</button>
 		</div>
-		
-		<div class="modal-body">
-			<div class="staff-modal-img">PLACEHOLDER</div>
 
+		<div class="modal-body">
 			<div class="staff-modal-sid">Staff ID: {{sID}}</div>
 
+			<div class="staff-building-id">Staff Building ID: {{Staff_bID}}</div>
+
 			<div class="staff-modal-position">Position: {{Employee_Type}}</div>
-		</div>
-	</div>
+
+			<div class="num-of-patients"> Number of Patients Overseeing: {{numpatients}}</div>
+
+	<button type="button" onclick="closeModalStaff()"  class="exit-modal-button">Exit</button>
+</div>
+</div>
 </div>
