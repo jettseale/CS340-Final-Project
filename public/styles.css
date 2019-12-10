@@ -106,7 +106,7 @@ nav{
   font-size: 20px;
 }
 
-.contatiner-of-info{
+.container-of-info{
     margin: 15px;
     margin-top: 30px;
     background-color: #27A5DE;
@@ -187,6 +187,8 @@ color: white;
 border: 1px solid black;
 margin: 20px;
 padding: 20px;
+background-color: white;
+border-radius: 15px;
 }
 
 .disease-for-text-bin:hover{
@@ -226,4 +228,28 @@ padding: 20px;
     padding: 3px;
     width: 175px;
     border: 1px solid #030B91;
+}
+
+#Staff-name{
+    font-size: 24px;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+#Staff_block{
+    width: 100%;
+    background-color: white;
+    height: 125px;
+    border-radius: 10px;
+    padding-top: 3px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+#Staff-info{
+    font-size: 18px;
+    padding: 10px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 15px;
 }
