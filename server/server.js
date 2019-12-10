@@ -74,9 +74,17 @@ app.get( '*', function(req, res) {
 app.post('/addLocation', function(req, res) {
 	console.log(req.body);
 	console.log(req.body.Address);
-	var sql = 'INSERT INTO Building_Info (Address, bID, img, Total_Rooms, Unused_Rooms, Used_Rooms) VALUES (?, ?, ?, ?, ?, ?)';
-	conn.query(sql, [req.body.Address, req.body.bID, req.body.img, req.body.Total_Rooms, req.body.Unused_Rooms, req.body.Used_Rooms], function () {
-		res.status(200);
+
+	var search = 'SELECT bID FROM Building_Info WHERE bID = ?';
+	conn.query(search, req.body.bID, function (error, rows, fields) {
+		if (rows.length) {
+			res.status(500).send("Error adding location: a location with that ID already exists.");
+		} else {
+			var sql = 'INSERT INTO Building_Info (Address, bID, img, Total_Rooms, Unused_Rooms, Used_Rooms) VALUES (?, ?, ?, ?, ?, ?)';
+			conn.query(sql, [req.body.Address, req.body.bID, req.body.img, req.body.Total_Rooms, req.body.Unused_Rooms, req.body.Used_Rooms], 			 function () {
+				res.status(200).send("Success");
+			});
+		}
 	});
 });
 
