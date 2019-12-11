@@ -107,6 +107,7 @@ nav{
 
 .box-for-picture {
     margin: 10px;
+    height: 90%;
 }
 
 .text-for-building{
@@ -132,10 +133,10 @@ nav{
     color: white;
     align-items: center;
     border: 1px solid white;
-    padding: 20px;
+    padding: 10px;
     margin: 50px;
     width:90%;
-    height: 90%;
+
 }
 
 .whole-container-home{
@@ -189,9 +190,15 @@ nav{
   background-color: rgba(0, 0, 0, 0.95);
 }
 
-.modal-dialog{
-color: white;
+.modal-body{
+    height: 80%;
+    text-align: center;
+    margin: 20px;
+}
 
+.modal-dialog{
+    color: white;
+    height: 50%;
 }
 
 .disease-for-text-bin {
@@ -225,6 +232,8 @@ color: white;
 .modal-header {
     text-align: center;
     color: white;
+    font-size: 25px;
+    margin-bottom: 15px;
 }
 
 .hidden {
@@ -323,4 +332,51 @@ color: white;
     padding-top: 0px;
     margin-bottom: 0px;
     margin-left: 15px;
+}
+
+#location-info-box{
+    display: inline-block;
+    position: relative;
+    bottom: 100px;
+    margin-left: 30px;
+    font-size: 20px;
+    border: 1px solid white;
+    height: 275px;
+    padding: 30px;
+    padding-top:40px;
+    width: 50%;
+}
+
+.location-info{
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.location-modal-img{
+    display: inline-block;
+    border: 1px solid white;
+}
+
+.exit-modal-button{
+    position: relative;
+    font-size: 20px;
+    padding: 5px;
+    background-color: #2B909B;
+    left:90%;
+    border-radius: 10px;
+    border: 1px solid blue;
+    bottom: 30px;
+    width: 60px;
+}
+
+.staff-info{
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.patient-info{
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-size: 20px;
 }
