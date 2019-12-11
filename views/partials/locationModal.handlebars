@@ -1,36 +1,34 @@
 <div id="modal-backdrop" class="hidden"></div>
 <div id="location-modal" class="hidden">
 	<div class="box-for-picture">
-	<h1 class= "location-header"> Location Modal  </h1>
-	<div class="modal-dialogue">
+        <h1 class= "location-header"> Location Information  </h1>
+        <div class="modal-dialogue">
 
-		<div class="modal-header">
-			<h3 class="address-modal">Address: {{Address}}</h3>
-		</div>
+            <div class="modal-header">
+                <h3 class="address-modal">{{Address}}</h3>
+            </div>
 
-		<div class="modal-body">
-			<div class="location-modal-img">
+            <div class="modal-body">
+                <div class="location-modal-img">
+                    <img src="{{img}}" class="picture-modal" alt="Picture of Hospital">
+                </div>
 
-				<img src="{{img}}" class="picture-modal" alt="Picture of Hospital">
+                <div id="location-info-box">
+                    <div class="location-info"> Building ID: {{bID}}</div>
 
-			</div>
+                    <div class="location-info">Number of staff: {{staffs}}</div>
 
-			<div class="location-modal-bid"> Building ID: {{bID}}</div>
+                    <div class="location-info">Number of patients: {{patient}}</div>
 
-			<div class="location-modal-num-staff">Number of staff: {{staffs}}</div>
+                    <div class="location-info">Number of Total Rooms: {{Total_Rooms}}</div>
 
-			<div class="location-modal-num-patients">Number of patients: {{patient}}</div>
+                    <div class="location-info"> Number of Used Rooms: {{Used_Rooms}}</div>
 
-			<div class="location-modal-num-total-rooms">Number of Total Rooms: {{Total_Rooms}}</div>
+                    <div class="location-info">Number of Available Rooms:{{Unused_Rooms}}</div>
+                </div>
+            </div>
 
-			<div class="location-modal-num-used-rooms"> Number of Used Rooms: {{Used_Rooms}}</div>
-
-			<div class="location-modal-num-unused-rooms">Number of Available Rooms:{{Unused_Rooms}}</div>
-		</div>
-
-		<button type="button" onclick="closeModalLocation()" class="exit-modal-button">Exit</button>
-	</div>
-
-</div>
-
+            <button type="button" onclick="closeModalLocation()" class="exit-modal-button">Exit</button>
+	    </div>
+    </div>
 </div>
