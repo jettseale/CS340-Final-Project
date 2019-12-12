@@ -284,7 +284,6 @@ function clearAddLocationInputs() {
 
 function validateLocation(newLocation) {
 	if (!newLocation.Address) return false;
-  if  (newLocation.Address.length = 20) {alert("Too Long Of Address"); return false;}
 	if (newLocation.Address[0] == " ") return false;
 	if (isNaN(newLocation.bID) || newLocation.bID <= 0) return false;
 	if (!newLocation.img) return false;
