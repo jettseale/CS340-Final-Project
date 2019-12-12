@@ -194,6 +194,7 @@ nav{
     height: 80%;
     text-align: center;
     margin: 20px;
+    font-size: 20px;
 }
 
 .modal-dialog{
@@ -380,4 +381,21 @@ nav{
     margin-bottom: 15px;
     margin-top: 5px;
     font-size: 20px;
+}
+
+.disease-card-id{
+    border: 1px solid white;
+    position: relative;
+    width: 30%;
+    left: 35%;
+    padding: 2px;
+}
+
+.treament-options{
+    margin: 2px;
+}
+
+#treatment-head{
+    margin-bottom: 0px;
+    font-size: 24px;
 }
