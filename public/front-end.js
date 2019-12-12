@@ -297,10 +297,12 @@ function validateLocation(newLocation) {
 
 addLocationButton.addEventListener('click', function() {
     addLocationModal.classList.toggle('hidden');
+    addLocationModalBG.classList.toggle('hidden');
 });
 
 addLocationCancelButton.addEventListener('click', function() {
 	addLocationModal.classList.toggle('hidden');
+	addLocationModalBG.classList.toggle('hidden');
 	clearAddLocationInputs();
 });
 
@@ -318,6 +320,7 @@ addLocationSubmitButton.addEventListener('click', function() {
 		clearAddLocationInputs();
 		console.log(newLocation);
 		addLocationModal.classList.toggle('hidden');
+		addLocationModalBG.classList.toggle('hidden');
 
 		var request = new XMLHttpRequest();
 		var url = '/addLocation';
