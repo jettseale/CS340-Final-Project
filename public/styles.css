@@ -263,7 +263,7 @@ nav{
 .staff-block{
     width: 99%;
     background-color: white;
-    height: 125px;
+    height: 80px;
     border-radius: 10px;
     padding-top: 3px;
     margin-bottom: 10px;
@@ -367,6 +367,7 @@ nav{
     border: 1px solid blue;
     bottom: 30px;
     width: 60px;
+    cursor: pointer;
 }
 
 .staff-info{
