@@ -95,7 +95,7 @@ function closeModalPatient(){
   createPatientModal.classList.add('hidden');
 
   modalBackdrop.parentNode.removeChild(modalBackdrop);
-  createPatienModal.parentNode.removeChild(createPatientModal);
+  createPatientModal.parentNode.removeChild(createPatientModal);
 
 }
 
@@ -234,6 +234,7 @@ function onCardClickPatients() {
 
     };
 
+    console.log(info);
     // Render the modal with the information from the card
     showModalPatient(info);
 }
@@ -256,8 +257,8 @@ Array.from(staffCards).forEach(function(staff) {
 });
 
 let patientCards = document.getElementsByClassName('p-block');
-Array.from(patientCards).forEach(function(staff) {
-    staff.addEventListener('click', onCardClickPatients);
+Array.from(patientCards).forEach(function(patientCard) {
+    patientCard.addEventListener('click', onCardClickPatients);
 });
 
 //ADD LOCATION MODAL:
